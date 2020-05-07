@@ -1,0 +1,29 @@
+{
+  "name": "sticky-notes",
+  "version": "0.1.0",
+  "description": "Sticky Notes",
+  "main": "main.js",
+  "scripts": {
+    "start": "electromon .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron App\"",
+    "package-linux": "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds"
+  },
+  "repository": "https://github.com/haolt/sticky-notes",
+  "keywords": [
+    "electron",
+    "electron-store",
+    "sticky notes",
+    "haodev"
+  ],
+  "author": "Haodev",
+  "license": "haodev.wordpress.com",
+  "devDependencies": {
+    "electromon": "^1.0.10",
+    "electron-packager": "^14.0.3"
+  },
+  "dependencies": {
+    "electron": "^5.0.8",
+    "electron-store": "^2.0.0"
+  }
+}
