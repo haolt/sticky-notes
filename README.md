@@ -8,7 +8,10 @@ ElectronJS
     "start": "electron ."
   }
 ```
-
+## Debug
+```js
+window.mainWindow.webContents.openDevTools();
+```
 ## Build
 ```js
 npm run package-mac

@@ -1,3 +1,6 @@
+@import './assets/tailwind.min.css';
+@import './assets/svgicons.css';
+
 body {
   font: caption;
 }

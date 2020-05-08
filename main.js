@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const { app, Menu } = require('electron');
+const { app, Menu, ipcMain } = require('electron');
 
 const Window = require('./Window');
 const DataStore = require('./DataStore');
@@ -18,8 +18,20 @@ function main () {
   const mainMenu = Menu.buildFromTemplate(menuBar);
   Menu.setApplicationMenu(mainMenu);
 
-  // mainWindow.webContents.openDevTools();
-
+  let addNoteWindow;
+  ipcMain.on('open-new-window-to-add-note', () => {
+    if (!addNoteWindow) {
+      addNoteWindow = new Window({
+        file: path.join('renderers', 'AddNote/index.html'),
+        width: 300,
+        height: 300,
+        parent: mainWindow
+      });
+      addNoteWindow.on('closed', () => {
+        addNoteWindow = null;
+      })
+    }
+  });
 }
 
 app.on('ready', main);
