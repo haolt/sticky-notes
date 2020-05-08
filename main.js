@@ -18,6 +18,8 @@ function main () {
   const mainMenu = Menu.buildFromTemplate(menuBar);
   Menu.setApplicationMenu(mainMenu);
 
+  // mainWindow.webContents.openDevTools();
+
 }
 
 app.on('ready', main);
