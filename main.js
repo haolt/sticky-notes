@@ -18,6 +18,11 @@ function main () {
   const mainMenu = Menu.buildFromTemplate(menuBar);
   Menu.setApplicationMenu(mainMenu);
 
+  // init
+  mainWindow.once('show', () => {
+    mainWindow.send('bind-all-notes-to-screen', notesData.notes);
+  });
+
   let addNoteWindow;
   ipcMain.on('open-new-window-to-add-note', () => {
     if (!addNoteWindow) {
@@ -29,14 +34,29 @@ function main () {
       });
       addNoteWindow.on('closed', () => {
         addNoteWindow = null;
-      })
-    }
+      });
+    };
   });
-}
+
+  ipcMain.on('add-this-note', (event, note) => {
+    const updatedNotes= notesData.addNote(note).notes;
+    mainWindow.send('bind-all-notes-to-screen', updatedNotes);
+  });
+
+  ipcMain.on('clear-all-notes', () => {
+    const updatedNotes= notesData.clear().notes;
+    mainWindow.send('bind-all-notes-to-screen', updatedNotes);
+  });
+
+  ipcMain.on('delete-this-note', (event, note) => {
+    const updatedNotes= notesData.deleteNote(note).notes;
+    mainWindow.send('bind-all-notes-to-screen', updatedNotes);
+  })
+
+};
 
 app.on('ready', main);
 
 app.on('window-all-closed', function () {
   app.quit();
 });
-

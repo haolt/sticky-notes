@@ -22,13 +22,19 @@ class DataStore extends Store {
 
   addNote (note) {
     this.notes = [ ...this.notes, note ];
-    return this.savenotes();
+    return this.saveNotes();
   };
 
   deleteNote (note) {
     this.notes = this.notes.filter(item => item !== note);
     return this.saveNotes();
   };
+
+  clear() {
+    this.notes = [];
+    return this.saveNotes();
+  };
+
 };
 
 module.exports = DataStore;
