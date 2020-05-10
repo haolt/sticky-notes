@@ -1,5 +1,5 @@
 ## Tech stacks
-ElectronJS
+ElectronJS, Tailwind CSS.
 
 ## Package
 - If no use electronmon, uninstall nodemon & edit `package.json`:
@@ -19,4 +19,11 @@ npm run package-win
 npm run package-linux
 ```
 
-## Contact me [here](https://haodev.wordpress.com/me/)
+## Installation files
+Get Installation files [here](https://bit.ly/electronjs-sticky-notes).
+
+## Post
+Discussion [here](https://haodev.wordpress.com/2020/05/10/electronjs-thu-vi-cuc/).
+
+## Contact
+Contact me [here](https://haodev.wordpress.com/me/).

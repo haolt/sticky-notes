@@ -15,8 +15,11 @@ function main () {
     icon: 'favicon.ico'
   });
 
-  const mainMenu = Menu.buildFromTemplate(menuBar);
-  Menu.setApplicationMenu(mainMenu);
+  // DISPLAY MENU
+  // const mainMenu = Menu.buildFromTemplate(menuBar);
+  // Menu.setApplicationMenu(mainMenu);
+  // HIDE MENU
+  mainWindow.setMenuBarVisibility(false)
 
   // init
   mainWindow.once('show', () => {
@@ -32,6 +35,7 @@ function main () {
         height: 300,
         parent: mainWindow
       });
+      addNoteWindow.setMenuBarVisibility(false)
       addNoteWindow.on('closed', () => {
         addNoteWindow = null;
       });
@@ -51,7 +55,7 @@ function main () {
   ipcMain.on('delete-this-note', (event, note) => {
     const updatedNotes= notesData.deleteNote(note).notes;
     mainWindow.send('bind-all-notes-to-screen', updatedNotes);
-  })
+  });
 
 };
 
